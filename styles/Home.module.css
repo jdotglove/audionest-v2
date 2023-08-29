@@ -1,0 +1,7 @@
+#dotCom-app p {
+    margin: 0;
+  }
+      
+  #dotCom-app .row {
+    flex-wrap: none;
+  }

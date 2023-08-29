@@ -1,0 +1,49 @@
+.navbarDesktop {
+    display: none;
+  }
+  
+  .navbarMobile {
+    display: block;
+  }
+  
+  @media only screen and (min-width: 350px) { 
+    .navbarMobile {
+      display: block;
+    }
+    .navbarDesktop {
+      display: none;
+    }
+  }
+  
+  @media only screen and (min-width: 768px) { 
+    .navbarMobile {
+      display: block;
+    }
+    .navbarDesktop {
+      display: none;
+    }
+  }
+    
+  @media screen and (min-width: 992px) { 
+    .verb-iframe {
+      height: 650px;
+    }
+    .navbarMobile {
+      display: none;
+    }
+    .navbarDesktop {
+      display: block;
+      font-size: x-large;
+    }
+  }
+    
+  /* X-Large devices (large desktops, 1200px and up) */
+  @media only screen and (min-width: 1200px) {
+    .navbarMobile {
+      display: none;
+    }
+    .navbarDesktop {
+      display: block;
+      font-size: x-large;
+    }
+  }

@@ -1,0 +1,14 @@
+$primary: #4598FF;
+// $primary: #005180;
+$secondary: #E0E0E0;
+
+// 2A0A0A
+
+$body-bg: #1A1717;
+$body-color: $secondary;
+
+$min-contrast-ratio: 2;
+
+$enable-flex: false !default;
+
+@import "../../node_modules/bootstrap/scss/bootstrap";
