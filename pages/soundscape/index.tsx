@@ -1,7 +1,7 @@
 import { Fragment, useEffect } from "react";
 import { Button, Row, Col, Container, Tabs, Tab } from "react-bootstrap";
 
-import SoundscapeNavbar from "../../../src/components/Navbars/SoundscapeNavbar";
+import SoundscapeNavbar from "../../src/components/Navbars/SoundscapeNavbar";
 
 declare global {
   interface Window {
