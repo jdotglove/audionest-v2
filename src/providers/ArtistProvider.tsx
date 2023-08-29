@@ -2,7 +2,6 @@ import React, { Fragment } from "react";
 
 import axios from "../plugins/axios";
 import { ArtistProviderState, ArtistProviderProps } from "../../types";
-import { SpotifyCache } from "../cache";
 import ArtistContext from "../contexts/ArtistContext";
 
 class ArtistProvider extends React.PureComponent<
