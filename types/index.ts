@@ -50,7 +50,7 @@ export interface SpotifyProviderState extends BaseSpotifyState {
 }
 
 export interface DiscoveryProviderState extends BaseSpotifyState {
-  newReleases: Array<string, any>;
+  newReleases: Array<any>;
   browsingCategories: Record<string, any>;
 };
 
