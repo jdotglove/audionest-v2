@@ -30,7 +30,7 @@ export default function Home() {
           <Col>
             <p>
               The aim of this project is to explore different
-              types of audio integrations as well as music and audio in general. I look to house any in features or
+              types of audio integrations as well as music and audio in general. I look to house any features or
               findings in a central place for anyone who might find it useful or interesting.
             </p>
             <p>
