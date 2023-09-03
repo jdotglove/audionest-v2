@@ -15,6 +15,9 @@ export default function MoreCategoryItemInfo({
     if (categoryItem.type !== 'playlist') {
       const filteredTracks = categoryItem.tracks.items.filter(track => track);
       setChartData(filteredTracks.map((track) => track.id));
+    } else {
+      const filteredTracks = categoryItem.tracks.items.filter(track => track.track);
+      setChartData(filteredTracks.map((track) => track.id));
     }
   },[categoryItem]);
 
@@ -56,7 +59,9 @@ export default function MoreCategoryItemInfo({
                 <TrackStatistics />
               </Col>
             ) : (
-              <Fragment></Fragment>
+              <Col>
+                <TrackStatistics />
+              </Col>
             )}
           </Row>
           <Row className="pb-3">
@@ -70,7 +75,7 @@ export default function MoreCategoryItemInfo({
             <Fragment>
               <Row>
                 <Col>
-                  <h5>Description:</h5> {categoryItem.description}
+                  <h5>Description:</h5> {categoryItem.description.replace( /(<([^>]+)>)/ig, '')}
                 </Col>
               </Row>
               <Row>

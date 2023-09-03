@@ -44,6 +44,25 @@ export default function IntegrationHub() {
                   </div>
                 </Col>
               </Row>
+              <Row className="py-2">
+                <Col>
+                  <h1>
+                    <span style={{ color: "#98611F" }}>Sound</span>scape
+                  </h1>
+                </Col>
+              </Row>
+              <Row className="py-2" md={3}>
+                <Col>
+                  <div className="d-grid gap-2">
+                    <Button
+                      size="lg"
+                      href="soundscape"
+                    >
+                      Enter
+                    </Button>
+                  </div>
+                </Col>
+              </Row>
             </Container>
           ) : (
             <Container>

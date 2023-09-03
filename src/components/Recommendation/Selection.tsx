@@ -81,6 +81,9 @@ export default function RecommendationSelection({ user }) {
               placement="end"
               show={showPlaylistBuilder}
               onHide={() => toggleShowPlaylistBuilder(false)}
+              style={{
+                width: 500
+              }}
             >
               <Offcanvas.Header closeButton closeVariant="white">
                 <Offcanvas.Title>Playlist Builder</Offcanvas.Title>
