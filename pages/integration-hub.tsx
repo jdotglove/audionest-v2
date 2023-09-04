@@ -44,7 +44,7 @@ export default function IntegrationHub() {
                   </div>
                 </Col>
               </Row>
-              <Row className="py-2">
+              {/* <Row className="py-2">
                 <Col>
                   <h1>
                     <span style={{ color: "#98611F" }}>Sound</span>scape
@@ -62,7 +62,7 @@ export default function IntegrationHub() {
                     </Button>
                   </div>
                 </Col>
-              </Row>
+              </Row> */}
             </Container>
           ) : (
             <Container>
