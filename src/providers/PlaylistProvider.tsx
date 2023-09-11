@@ -40,7 +40,7 @@ class PlaylistProvider extends React.PureComponent<
     try {
       const accessToken = sessionStorage.getItem("accessToken");
       const response = await axios({
-        url: `${process.env.NEXT_PUBLIC_BASE_API_URL}/playlist/${playlistSpotifyId}/tracks?token=${accessToken}`,
+        url: `${process.env.NEXT_PUBLIC_BASE_SPOTIFY_API_URL}/playlist/${playlistSpotifyId}/tracks?token=${accessToken}`,
         method: "get",
         headers: {
           authorization: process.env.NEXT_PUBLIC_SERVER_API_KEY,
@@ -69,7 +69,7 @@ class PlaylistProvider extends React.PureComponent<
     try {
       const accessToken = sessionStorage.getItem("accessToken");
       await axios({
-        url: `${process.env.NEXT_PUBLIC_BASE_API_URL}/user/${userSpotifyId}/playlist?token=${accessToken}`,
+        url: `${process.env.NEXT_PUBLIC_BASE_SPOTIFY_API_URL}/user/${userSpotifyId}/playlist?token=${accessToken}`,
         method: "post",
         headers: {
           authorization: process.env.NEXT_PUBLIC_SERVER_API_KEY,

@@ -45,7 +45,7 @@ class SpotifyProvider extends React.PureComponent<
 
   login = async (accessToken: string) => {
     try {
-      const fetchUrl = `${process.env.NEXT_PUBLIC_BASE_API_URL}/user/login?token=${accessToken}`;
+      const fetchUrl = `${process.env.NEXT_PUBLIC_BASE_SPOTIFY_API_URL}/user/login?token=${accessToken}`;
       const response = await axios({
         url: fetchUrl,
         method: "post",
@@ -83,7 +83,7 @@ class SpotifyProvider extends React.PureComponent<
     try {
       const accessToken = token ?? sessionStorage.getItem("accessToken");
       const response = await axios({
-        url: `${process.env.NEXT_PUBLIC_BASE_API_URL}/user/${userSpotifyId}/top-artists?token=${accessToken}`,
+        url: `${process.env.NEXT_PUBLIC_BASE_SPOTIFY_API_URL}/user/${userSpotifyId}/top-artists?token=${accessToken}`,
         method: "get",
         headers: {
           authorization: process.env.NEXT_PUBLIC_SERVER_API_KEY,
@@ -113,7 +113,7 @@ class SpotifyProvider extends React.PureComponent<
     try {
       const accessToken = token ?? sessionStorage.getItem("accessToken");
       const response = await axios({
-        url: `${process.env.NEXT_PUBLIC_BASE_API_URL}/user/${userSpotifyId}/top-tracks?token=${accessToken}`,
+        url: `${process.env.NEXT_PUBLIC_BASE_SPOTIFY_API_URL}/user/${userSpotifyId}/top-tracks?token=${accessToken}`,
         method: "get",
         headers: {
           authorization: process.env.NEXT_PUBLIC_SERVER_API_KEY,
@@ -142,7 +142,7 @@ class SpotifyProvider extends React.PureComponent<
     try {
       const accessToken = token ?? sessionStorage.getItem("accessToken");
       const response = await axios({
-        url: `${process.env.NEXT_PUBLIC_BASE_API_URL}/user/${userSpotifyId}/playlists?token=${accessToken}`,
+        url: `${process.env.NEXT_PUBLIC_BASE_SPOTIFY_API_URL}/user/${userSpotifyId}/playlists?token=${accessToken}`,
         method: "get",
         headers: {
           authorization: process.env.NEXT_PUBLIC_SERVER_API_KEY,
@@ -167,7 +167,7 @@ class SpotifyProvider extends React.PureComponent<
     try {
       const accessToken = sessionStorage.getItem("accessToken");
       const response = await axios({
-        url: `${process.env.NEXT_PUBLIC_BASE_API_URL}/${searchType}/search?token=${accessToken}`,
+        url: `${process.env.NEXT_PUBLIC_BASE_SPOTIFY_API_URL}/${searchType}/search?token=${accessToken}`,
         method: "post",
         headers: {
           authorization: process.env.NEXT_PUBLIC_SERVER_API_KEY,
@@ -210,7 +210,7 @@ class SpotifyProvider extends React.PureComponent<
       const accessToken = sessionStorage.getItem("accessToken");
       const response = await axios({
         url: `${
-          process.env.NEXT_PUBLIC_BASE_API_URL
+          process.env.NEXT_PUBLIC_BASE_SPOTIFY_API_URL
         }/track?token=${accessToken}&ids=${trackIdArray.join(",")}`,
         method: "get",
         headers: {

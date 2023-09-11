@@ -47,7 +47,7 @@ class TrackProvider extends React.Component<
     try {
       const accessToken = sessionStorage.getItem("accessToken");
       const response = await axios({
-        url: `${process.env.NEXT_PUBLIC_BASE_API_URL}/track/${this.state.trackId}?token=${accessToken}`,
+        url: `${process.env.NEXT_PUBLIC_BASE_SPOTIFY_API_URL}/track/${this.state.trackId}?token=${accessToken}`,
         method: "get",
         headers: {
           authorization: process.env.NEXT_PUBLIC_SERVER_API_KEY,
@@ -73,7 +73,7 @@ class TrackProvider extends React.Component<
     try {
       const accessToken = sessionStorage.getItem("accessToken");
       const response = await axios({
-        url: `${process.env.NEXT_PUBLIC_BASE_API_URL}/artist/${artistId}?token=${accessToken}`,
+        url: `${process.env.NEXT_PUBLIC_BASE_SPOTIFY_API_URL}/artist/${artistId}?token=${accessToken}`,
         method: "get",
         headers: {
           authorization: process.env.NEXT_PUBLIC_SERVER_API_KEY,

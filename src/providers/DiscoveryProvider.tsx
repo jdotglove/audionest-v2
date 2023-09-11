@@ -22,7 +22,7 @@ class DiscoveryProvider extends React.PureComponent<
     try {
       const accessToken = sessionStorage.getItem("accessToken");
       const response = await axios({
-        url: `${process.env.NEXT_PUBLIC_BASE_API_URL}/discovery/new-releases?token=${accessToken}&page=${page}`,
+        url: `${process.env.NEXT_PUBLIC_BASE_SPOTIFY_API_URL}/discovery/new-releases?token=${accessToken}&page=${page}`,
         method: "get",
         headers: {
           authorization: process.env.NEXT_PUBLIC_SERVER_API_KEY,
@@ -48,7 +48,7 @@ class DiscoveryProvider extends React.PureComponent<
     try {
       const accessToken = sessionStorage.getItem("accessToken");
       const response = await axios({
-        url: `${process.env.NEXT_PUBLIC_BASE_API_URL}/discovery/${category}/playlists?token=${accessToken}&page=${page}`,
+        url: `${process.env.NEXT_PUBLIC_BASE_SPOTIFY_API_URL}/discovery/${category}/playlists?token=${accessToken}&page=${page}`,
         method: "get",
         headers: {
           authorization: process.env.NEXT_PUBLIC_SERVER_API_KEY,
@@ -76,7 +76,7 @@ class DiscoveryProvider extends React.PureComponent<
       console.log("Type: ", itemType);
       console.log("Id: ", categoryItemId);
       const response = await axios({
-        url: `${process.env.NEXT_PUBLIC_BASE_API_URL}/${itemType}/${categoryItemId}?token=${accessToken}`,
+        url: `${process.env.NEXT_PUBLIC_BASE_SPOTIFY_API_URL}/${itemType}/${categoryItemId}?token=${accessToken}`,
         method: "get",
         headers: {
           authorization: process.env.NEXT_PUBLIC_SERVER_API_KEY,
@@ -101,7 +101,7 @@ class DiscoveryProvider extends React.PureComponent<
     try {
       const accessToken = sessionStorage.getItem("accessToken");
       const response = await axios({
-        url: `${process.env.NEXT_PUBLIC_BASE_API_URL}/${itemType}/${categoryItemId}/tracks?token=${accessToken}`,
+        url: `${process.env.NEXT_PUBLIC_BASE_SPOTIFY_API_URL}/${itemType}/${categoryItemId}/tracks?token=${accessToken}`,
         method: "get",
         headers: {
           authorization: process.env.NEXT_PUBLIC_SERVER_API_KEY,
@@ -125,7 +125,7 @@ class DiscoveryProvider extends React.PureComponent<
     try {
       const accessToken = sessionStorage.getItem("accessToken");
       const response = await axios({
-        url: `${process.env.NEXT_PUBLIC_BASE_API_URL}/discovery/categories?token=${accessToken}`,
+        url: `${process.env.NEXT_PUBLIC_BASE_SPOTIFY_API_URL}/discovery/categories?token=${accessToken}`,
         method: "get",
         headers: {
           authorization: process.env.NEXT_PUBLIC_SERVER_API_KEY,

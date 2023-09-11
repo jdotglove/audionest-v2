@@ -92,7 +92,7 @@ class RecommendationProvider extends React.PureComponent<
         ),
       };
       const response = await axios({
-        url: `${process.env.NEXT_PUBLIC_BASE_API_URL}/recommendations?token=${accessToken}`,
+        url: `${process.env.NEXT_PUBLIC_BASE_SPOTIFY_API_URL}/recommendations?token=${accessToken}`,
         method: "post",
         headers: {
           authorization: process.env.NEXT_PUBLIC_SERVER_API_KEY,
@@ -117,7 +117,7 @@ class RecommendationProvider extends React.PureComponent<
     try {
       const accessToken = sessionStorage.getItem("accessToken");
       const response = await axios({
-        url: `${process.env.NEXT_PUBLIC_BASE_API_URL}/recommendations/seed-genres?token=${accessToken}`,
+        url: `${process.env.NEXT_PUBLIC_BASE_SPOTIFY_API_URL}/recommendations/seed-genres?token=${accessToken}`,
         method: "get",
         headers: {
           authorization: process.env.NEXT_PUBLIC_SERVER_API_KEY,
@@ -236,7 +236,7 @@ class RecommendationProvider extends React.PureComponent<
     try {
       const accessToken = sessionStorage.getItem("accessToken");
       const response = await axios({
-        url: `${process.env.NEXT_PUBLIC_BASE_API_URL}/user/${userSpotifyId}/playback-state?token=${accessToken}`,
+        url: `${process.env.NEXT_PUBLIC_BASE_SPOTIFY_API_URL}/user/${userSpotifyId}/playback-state?token=${accessToken}`,
         method: "get",
         headers: {
           authorization: process.env.NEXT_PUBLIC_SERVER_API_KEY,
@@ -291,7 +291,7 @@ class RecommendationProvider extends React.PureComponent<
     try {
       const accessToken = sessionStorage.getItem("accessToken");
       await axios({
-        url: `${process.env.NEXT_PUBLIC_BASE_API_URL}/user/${userSpotifyId}/queue?token=${accessToken}`,
+        url: `${process.env.NEXT_PUBLIC_BASE_SPOTIFY_API_URL}/user/${userSpotifyId}/queue?token=${accessToken}`,
         method: "post",
         headers: {
           authorization: process.env.NEXT_PUBLIC_SERVER_API_KEY,
