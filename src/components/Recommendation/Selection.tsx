@@ -41,7 +41,7 @@ export default function RecommendationSelection({ user }) {
         }) => (
           <Fragment>
             <Modal show={modelOpen} onHide={handleCloseModal}>
-              <Modal.Header closeButton>
+              <Modal.Header closeButton closeVariant="white">
                 <Modal.Title>Set Playlist Details</Modal.Title>
               </Modal.Header>
               <Modal.Body>

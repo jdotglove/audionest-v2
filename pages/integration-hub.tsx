@@ -35,6 +35,7 @@ export default function IntegrationHub() {
                   <div className="d-grid gap-2">
                     <Button
                       size="lg"
+                      style={{ backgroundColor: "#98611F", borderColor: "#98611F" }}
                       onClick={async () => {
                         await authenticateSpotifyUser();
                       }}
