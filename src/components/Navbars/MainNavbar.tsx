@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, Fragment } from 'react';
 import { Container, Nav, Navbar, Offcanvas } from 'react-bootstrap';
 import FontProvider from '../../providers/FontProvider';
 
@@ -8,7 +8,7 @@ export default function MainNavbar() {
   const handleCloseOffCanvas = () => setShowOffCanvas(false);
   const handleShowOffCanvas = () => setShowOffCanvas(true);
   return (
-    <div>
+    <Fragment>
       <Navbar className="d-none d-lg-block" style={{
         background: '#98611F',
       }} variant="light">
@@ -57,6 +57,6 @@ export default function MainNavbar() {
           </Offcanvas>
         </Container>
       </Navbar>
-    </div>
+    </Fragment>
   );
 }

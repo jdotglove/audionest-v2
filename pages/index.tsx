@@ -1,4 +1,4 @@
-import { Col, Container, Row } from 'react-bootstrap';
+import { Button, Col, Container, Row } from 'react-bootstrap';
 
 import MainNavbar from '../src/components/Navbars/MainNavbar';
 export default function Home() {
@@ -19,7 +19,7 @@ export default function Home() {
                 fontSize: 'x-large',
                 fontWeight: 400,
               }}>
-                The nest you never want to leave...
+                A place I made to explore music, there will be more to come but for now might as well check out what&apos;s here
               </p>
             </Col>
         </Row>
@@ -29,13 +29,13 @@ export default function Home() {
         }}>
           <Col>
             <p>
-              The aim of this project is to explore different
-              types of audio integrations as well as music and audio in general. I look to house any features or
-              findings in a central place for anyone who might find it useful or interesting.
-            </p>
-            <p>
               Hope you enjoy your stay!
             </p>
+            <div>
+              <Button href="/integration-hub" style={{ backgroundColor: "#98611F", borderColor: "#98611F" }}>
+                Spotify Crate Digger
+              </Button>
+            </div>
           </Col>
         </Row>
         {/* <DashedTriangle /> */}
