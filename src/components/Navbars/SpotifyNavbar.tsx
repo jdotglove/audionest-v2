@@ -25,7 +25,7 @@ export default function SpotifyNavbar() {
           background: "#98611F",
         }}
         variant="light"
-        className="d-none d-lg-block"
+        className="d-none d-lg-flex"
       >
         {/* TODO: need to check into better routing flow */}
         {/* Might need to avoid nesting routes so deep and prefix them instead */}
