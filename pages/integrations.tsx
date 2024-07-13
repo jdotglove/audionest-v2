@@ -26,7 +26,7 @@ export default function Integrations() {
               <Row className="py-2">
                 <Col>
                   <h1>
-                    Virtual <span style={{ color: "#98611F" }}>Spotify</span> Crate Digger
+                    Virtual Spotify Crate Digger
                   </h1>
                 </Col>
               </Row>
