@@ -4,11 +4,11 @@ import { Button, Container, Row, Col } from "react-bootstrap";
 
 import MainNavbar from "../src/components/Navbars/MainNavbar";
 import SpotifyContext from "../src/contexts/SpotifyContext";
-import styles from "../styles/IntegrationHub.module.css";
+import styles from "../styles/Integrations.module.css";
 import { authenticateSpotify } from "../src/middleware/spotify";
 
 
-export default function IntegrationHub() {
+export default function Integrations() {
   const { isLoggedIn } = useContext(SpotifyContext);
   const { push } = useRouter();
   const authenticateSpotifyUser = async () => {
@@ -74,7 +74,7 @@ export default function IntegrationHub() {
                     display: "flex",
                     justifyContent: "center",
                     alignItems: "center",
-                    height: "15vh",
+                    height: "15dvh",
                   }}
                 >
                   <h1> Successfully Logged In </h1>

@@ -11,16 +11,27 @@ export default function MainNavbar() {
     <Fragment>
       <Navbar className="d-none d-lg-block" style={{
         background: '#98611F',
+        color: "#FFFFFF"
       }} variant="light">
         <Container fluid>
           <Navbar.Brand style={{
             fontSize: 'xx-large',
+
+            color: "#FFFFFF"
           }} href="/">AudioNest</Navbar.Brand>
-          <Nav className="me-auto">
-            <Nav.Link href="/integration-hub">Integration Hub</Nav.Link>
-            <Nav.Link href="/resume">Résumé</Nav.Link>
-            <Nav.Link href="/about-me">About Me</Nav.Link>
-            <Nav.Link href="/contact">Contact/Links</Nav.Link>
+          <Nav className="me-auto" >
+            <Nav.Link style={{
+            color: "#FFFFFF"
+          }} href="/integrations">Integrations</Nav.Link>
+            <Nav.Link style={{
+            color: "#FFFFFF"
+          }} href="/resume">Résumé</Nav.Link>
+            <Nav.Link style={{
+            color: "#FFFFFF"
+          }} href="/about-me">About Me</Nav.Link>
+            <Nav.Link style={{
+            color: "#FFFFFF"
+          }} href="/contact">Contact/Links</Nav.Link>
           </Nav>
         </Container>
       </Navbar>
@@ -28,7 +39,9 @@ export default function MainNavbar() {
         background: '#98611F',
       }} variant="light">
         <Container fluid>
-          <Navbar.Brand href="/">AudioNest</Navbar.Brand>
+          <Navbar.Brand style={{
+            color: "#FFFFFF"
+          }} href="/">AudioNest</Navbar.Brand>
           <Navbar.Toggle className="d-block" onClick={handleShowOffCanvas} />
           <Offcanvas
             show={show} onHide={handleCloseOffCanvas}
@@ -40,17 +53,17 @@ export default function MainNavbar() {
             <FontProvider>
               <Offcanvas.Header  closeButton>
                 <Offcanvas.Title>
-                  <Navbar.Brand className="text-black"
+                  <Navbar.Brand className="text-white"
                     href="/"
                   >AudioNest</Navbar.Brand>
                 </Offcanvas.Title>
               </Offcanvas.Header>
               <Offcanvas.Body>
                 <Nav className="justify-content-end pe-3 me-auto">
-                  <Nav.Link className="text-black" href="/integration-hub">Integration Hub</Nav.Link>
-                  <Nav.Link className="text-black" href="/resume">Résumé</Nav.Link>
-                  <Nav.Link className="text-black" href="/about-me">About Me</Nav.Link>
-                  <Nav.Link className="text-black" href="/contact">Contact/Links</Nav.Link>
+                  <Nav.Link className="text-white" href="/integrations">Integrations</Nav.Link>
+                  <Nav.Link className="text-white" href="/resume">Résumé</Nav.Link>
+                  <Nav.Link className="text-white" href="/about-me">About Me</Nav.Link>
+                  <Nav.Link className="text-white" href="/contact">Contact/Links</Nav.Link>
                 </Nav>
               </Offcanvas.Body>
             </FontProvider>

@@ -32,7 +32,8 @@ export default function Home() {
               Hope you enjoy your stay!
             </p>
             <div>
-              <Button href="/integration-hub" style={{ backgroundColor: "#98611F", borderColor: "#98611F" }}>
+              <h3>Feature Spotlight: </h3>
+              <Button href="/integrations" style={{ backgroundColor: "#98611F", borderColor: "#98611F" }}>
                 Spotify Crate Digger
               </Button>
             </div>
