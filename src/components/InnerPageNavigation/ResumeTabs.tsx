@@ -26,7 +26,7 @@ function ResumeTabs() {
             </section>
             <div style={{ fontSize: "24px"}}>Alex and Asher Tech:</div>
             <div>Landing page build to showcase the product and services offered by Alex and Asher</div>
-            <a href="https://www.alexandasher.tech/">Link to site</a>
+            <a target="_blank" href="https://www.alexandasher.tech/">Link to site</a>
             <div>Built with HTML, Javascript and CSS</div>
           </div>
           {/* <div>
