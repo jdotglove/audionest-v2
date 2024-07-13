@@ -34,13 +34,18 @@ export default function AboutMe() {
               that could detect the displayed emotion.
             </p>
             <p>  
-              After graduating, I worked in a Tech consulting position before joining the Customer Experience team at Verb Energy. This position allowed me to have a first-hand look at what goes into managing relationships 
+              After graduating, I joined the Customer Experience team at Verb Energy. This position allowed me to have a first-hand look at what goes into managing relationships 
               with customers and getting used to what might be needed for agents on a CRM. Eventually, I migrated to the Engineering team, where I developed as a Full Stack Engineer with a propensity for Backend Engineering, 
               working mainly with Node.js, Vue, and GraphQL. I have also done some side projects using React, Django, and WebRTC, trying to experiment with different music and audio technologies.
             </p>
             <p>
+              Most recently, I started as an Application Developer for the Kansas City Chiefs, where I am able to utilize my full stack knowledge to build out various apps for different
+              football and business needs. This position is also allowing me to build a better repertoire of responsive design as I must ensure that the web applications show up well on
+              various different device types.
+            </p>
+            <p>
               Outside of tech, I am also a huge soccer fan (more specifically, Liverpool) but also enjoy watching most sports.
-              In my free time I can be found, listening to music, boxing, dancing, playing soccer, or playing chess.
+              In my free time I can be found, listening to music, boxing, and playing soccer.
             </p>
           </Col>
         </Row>

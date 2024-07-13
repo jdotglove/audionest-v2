@@ -29,7 +29,7 @@ export default function SpotifyNavbar() {
       >
         {/* TODO: need to check into better routing flow */}
         {/* Might need to avoid nesting routes so deep and prefix them instead */}
-        <Navbar.Brand className="mx-3" href="/">
+        <Navbar.Brand className="mx-3 text-white" href="/">
           AudioNest
         </Navbar.Brand>
         <Nav variant="underline" activeKey={activeKey}>
@@ -37,28 +37,24 @@ export default function SpotifyNavbar() {
             <Nav.Link
               href="recommendation-generator"
               eventKey="recommendation-generator"
+              className="text-white"
             >
               Recommendation Generator
             </Nav.Link>
           </Nav.Item>
           <Nav.Item>
-            <Nav.Link href="discovery" eventKey="discovery">
-              Discovery
-            </Nav.Link>
-          </Nav.Item>
-          <Nav.Item>
-            <Nav.Link href="playlist-analysis" eventKey="playlist-analysis">
+            <Nav.Link className="text-white" href="playlist-analysis" eventKey="playlist-analysis">
               Playlist Analysis
             </Nav.Link>
           </Nav.Item>
           <Nav.Item>
-            <Nav.Link href="user-profile" eventKey="user-profile">
+            <Nav.Link className="text-white" href="user-profile" eventKey="user-profile">
               User Profile
             </Nav.Link>
           </Nav.Item>
         </Nav>
         <Navbar.Collapse className="justify-content-end">
-          <Navbar.Text>
+          <Navbar.Text className="text-white">
             Welcome, {user?.display_name}!
             {user?.images[0] && (
               <Image
@@ -94,12 +90,12 @@ export default function SpotifyNavbar() {
             <FontProvider>
               <Offcanvas.Header closeButton>
                 <Offcanvas.Title>
-                  <Navbar.Brand className="text-black" href="/">
+                  <Navbar.Brand className="text-white" href="/">
                     AudioNest
                   </Navbar.Brand>
                 </Offcanvas.Title>
               </Offcanvas.Header>
-              <Offcanvas.Body className="text-black">
+              <Offcanvas.Body className="text-white">
                 <Nav variant="underline" activeKey={activeKey}>
                   <Nav.Item>
                     <Nav.Link
@@ -107,11 +103,6 @@ export default function SpotifyNavbar() {
                       eventKey="recommendation-generator"
                     >
                       Recommendation Generator
-                    </Nav.Link>
-                  </Nav.Item>
-                  <Nav.Item>
-                    <Nav.Link href="discovery" eventKey="discovery">
-                      Discovery
                     </Nav.Link>
                   </Nav.Item>
                   <Nav.Item>
