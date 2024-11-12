@@ -1,5 +1,4 @@
 import React from "react";
-import { Container, Card } from "react-bootstrap";
 import {
   Chart as ChartJS,
   RadialLinearScale,
@@ -20,44 +19,33 @@ ChartJS.register(
   Tooltip,
   Legend
 );
-export default function TrackStatistics({ style }: { style?: Record<string, string | number> }) {
+
+export default function TrackStatistics({
+  style,
+}: {
+  style?: Record<string, string | number>;
+}) {
   return (
-    <Container style={style}>
-      <ChartContext.Consumer>
-        {({ chartData }) =>
-          chartData ? (
-            <Card>
-              <Radar
-                data={chartData}
-                options={{
-                  scales: {
-                    r: {
-                      min: 0,
-                      max: 100,
-                      pointLabels: {
-                        font: {
-                          size: 16
-                        }
-                      }
-                    },
-                  },
-                  plugins: {
-                    legend: {
-                      display: false,
-                    },
-                  },
-                  // @ts-ignore
-                  tooltips: {
-                    mode: "label"
-                  },
-                }}
-              />
-            </Card>
-          ) : (
-            <p>Select a track to see analysis</p>
-          )
-        }
-      </ChartContext.Consumer>
-    </Container>
+    <ChartContext.Consumer>
+      {({ chartData }) =>
+        chartData ? (
+          <div className="gap-4 flex flex-col">
+            {chartData.labels.map((label: string, idx) => (
+          <div
+            key={label}
+            className="bg-[#37474F] p-3 rounded-lg flex justify-between items-center"
+          >
+            <span className="font-semibold">{label}</span>
+            <span>{chartData?.datasets[0]?.data[idx]?.toFixed(2)}</span>
+          </div>
+        ))}
+          </div>
+        ) : (
+          <p className="text-[#F2E8CF] text-center">
+            Select a track to see analysis
+          </p>
+        )
+      }
+    </ChartContext.Consumer>
   );
 }

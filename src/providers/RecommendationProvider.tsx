@@ -180,6 +180,12 @@ class RecommendationProvider extends React.PureComponent<
         seedAddResult: "danger",
       });
     }
+
+    setTimeout(() => {
+      this.setState({
+        showSeedAlert: false,
+      })
+    }, 1500);
   };
 
   maxSeedCapacityReached = () => {
@@ -214,6 +220,12 @@ class RecommendationProvider extends React.PureComponent<
         seedAddResult: "danger",
       });
     }
+
+    setTimeout(() => {
+      this.setState({
+        showSeedAlert: false,
+      })
+    }, 1500);
   };
 
   atLeastOneSeedSelected = () => {
@@ -335,6 +347,9 @@ class RecommendationProvider extends React.PureComponent<
   };
 
   toggleShowSeedSearch = (newDisplayValue: boolean) => {
+    if (newDisplayValue === false) {
+      
+    }
     this.setState({
       showSeedSearch: newDisplayValue,
     });

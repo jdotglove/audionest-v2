@@ -1,6 +1,4 @@
 import { Fragment } from "react";
-import { Container } from "react-bootstrap";
-
 import PlaylistAnalysisContainer from "../../src/components/Playlist/AnalysisContainer";
 import SpotifyNavbar from "../../src/components/Navbars/SpotifyNavbar";
 import SpotifyProvider from "../../src/providers/SpotifyProvider";
@@ -8,15 +6,15 @@ import ChartProvider from "../../src/providers/ChartProvider";
 
 export default function PlaylistAnalysisPage() {
   return (
-    <Fragment>
+    <div className="flex flex-col min-h-screen bg-[#1B1F24] text-[#F2E8CF]">
       <SpotifyProvider>
         <SpotifyNavbar />
-        <Container className="py-3">
+        <div className="container mx-auto py-6">
           <ChartProvider>
             <PlaylistAnalysisContainer />
           </ChartProvider>
-        </Container>
+        </div>
       </SpotifyProvider>
-    </Fragment>
+    </div>
   );
 }

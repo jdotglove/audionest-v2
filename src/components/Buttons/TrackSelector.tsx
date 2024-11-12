@@ -1,5 +1,4 @@
 import React from "react";
-import { ListGroup } from "react-bootstrap";
 import ChartContext from "../../contexts/ChartContext";
 
 export default function TrackSelector({
@@ -10,16 +9,14 @@ export default function TrackSelector({
   return (
     <ChartContext.Consumer>
       {({ setChartData }) => (
-        <ListGroup.Item
-          action
-          variant="dark"
-          eventKey={`${track.id}`}
+        <div
+          className="bg-[#37474F] text-[#F2E8CF] p-3 rounded-lg cursor-pointer mb-2 hover:bg-[#98611F] hover:text-[#1B1F24] transition-all duration-300"
           onClick={async () => {
             await setChartData([track.id]);
           }}
         >
           {track ? track.name : ""}
-        </ListGroup.Item>
+        </div>
       )}
     </ChartContext.Consumer>
   );

@@ -2,36 +2,31 @@ import React, { Fragment } from "react";
 
 import SpotifyContext from "../../contexts/SpotifyContext";
 import PlaylistSelector from "../Buttons/PlaylistSelector";
-import { Container, Card, ListGroup } from "react-bootstrap";
 import PlaylistProvider from "../../providers/PlaylistProvider";
 
 export default function PlaylistDisplay() {
   return (
     <SpotifyContext.Consumer>
       {({ playlists, setSelectedPlaylist }) => (
-        <Container>
-          {playlists.length && (
-            <Card className="d-grid m-3 gap-2" style={{ height: "50rem", maxWidth: "300px" }}>
-                <h3>User Playlists</h3>
-              <Card.Body className="overflow-scroll">
-                <ListGroup>
-                  {playlists.map(
-                    (playlist: Audionest.Playlist, idx: number) => {
-                      return (
-                        <Fragment key={idx}>
-                          <PlaylistSelector
-                            playlist={playlist}
-                            setSelectedPlaylist={setSelectedPlaylist}
-                          />
-                        </Fragment>
-                      );
-                    }
-                  )}
-                </ListGroup>
-              </Card.Body>
-            </Card>
+        <div className="container mx-auto py-6">
+          {playlists.length > 0 && (
+            <div className="rounded-lg p-4 w-full max-w-xs mx-auto">
+              <h3 className="text-lg font-bold text-[#F2E8CF] mb-4">User Playlists</h3>
+              <div className="overflow-y-auto" style={{ height: "50rem" }}>
+                <ul className="space-y-2">
+                  {playlists.map((playlist, idx) => (
+                    <Fragment key={idx}>
+                      <PlaylistSelector
+                        playlist={playlist}
+                        setSelectedPlaylist={setSelectedPlaylist}
+                      />
+                    </Fragment>
+                  ))}
+                </ul>
+              </div>
+            </div>
           )}
-        </Container>
+        </div>
       )}
     </SpotifyContext.Consumer>
   );

@@ -1,75 +1,100 @@
-import { useState, Fragment } from 'react';
-import { Container, Nav, Navbar, Offcanvas } from 'react-bootstrap';
-import FontProvider from '../../providers/FontProvider';
+import Link from "next/link";
+import { useState, useRef, useEffect } from "react";
 
 export default function MainNavbar() {
-  const [show, setShowOffCanvas] = useState(false);
+  const [showOffCanvas, setShowOffCanvas] = useState(false);
+  const offCanvasRef = useRef(null);
+  const toggleButtonRef = useRef(null); // Ref for the toggle button
 
   const handleCloseOffCanvas = () => setShowOffCanvas(false);
   const handleShowOffCanvas = () => setShowOffCanvas(true);
-  return (
-    <Fragment>
-      <Navbar className="d-none d-lg-block" style={{
-        background: '#98611F',
-        color: "#FFFFFF"
-      }} variant="light">
-        <Container fluid>
-          <Navbar.Brand style={{
-            fontSize: 'xx-large',
 
-            color: "#FFFFFF"
-          }} href="/">AudioNest</Navbar.Brand>
-          <Nav className="me-auto" >
-            <Nav.Link style={{
-            color: "#FFFFFF"
-          }} href="/integrations">Integrations</Nav.Link>
-            <Nav.Link style={{
-            color: "#FFFFFF"
-          }} href="/resume">Résumé</Nav.Link>
-            <Nav.Link style={{
-            color: "#FFFFFF"
-          }} href="/about-me">About Me</Nav.Link>
-            <Nav.Link style={{
-            color: "#FFFFFF"
-          }} href="/contact">Contact/Links</Nav.Link>
-          </Nav>
-        </Container>
-      </Navbar>
-      <Navbar className="d-lg-none" style={{
-        background: '#98611F',
-      }} variant="light">
-        <Container fluid>
-          <Navbar.Brand style={{
-            color: "#FFFFFF"
-          }} href="/">AudioNest</Navbar.Brand>
-          <Navbar.Toggle className="d-block" onClick={handleShowOffCanvas} />
-          <Offcanvas
-            show={show} onHide={handleCloseOffCanvas}
-            placement="end"
-            style={{
-              backgroundColor: '#98611F',
-            }}
-          >
-            <FontProvider>
-              <Offcanvas.Header  closeButton>
-                <Offcanvas.Title>
-                  <Navbar.Brand className="text-white"
-                    href="/"
-                  >AudioNest</Navbar.Brand>
-                </Offcanvas.Title>
-              </Offcanvas.Header>
-              <Offcanvas.Body>
-                <Nav className="justify-content-end pe-3 me-auto">
-                  <Nav.Link className="text-white" href="/integrations">Integrations</Nav.Link>
-                  <Nav.Link className="text-white" href="/resume">Résumé</Nav.Link>
-                  <Nav.Link className="text-white" href="/about-me">About Me</Nav.Link>
-                  <Nav.Link className="text-white" href="/contact">Contact/Links</Nav.Link>
-                </Nav>
-              </Offcanvas.Body>
-            </FontProvider>
-          </Offcanvas>
-        </Container>
-      </Navbar>
-    </Fragment>
+  const handleClickOutside = (event) => {
+    if (offCanvasRef.current && !offCanvasRef.current.contains(event.target)) {
+      handleCloseOffCanvas();
+    }
+  };
+
+  // Attach the click event listener to the document
+  useEffect(() => {
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
+
+  return (
+    <div>
+      {/* Desktop Navbar */}
+      <nav className="hidden lg:flex bg-[#37474F] text-[#F2E8CF]">
+        <div className="container px-4 py-2 flex gap-5 items-center">
+          <a href="/" className="text-3xl font-bold">
+            Audionest
+          </a>
+          <div className="flex text-xl space-x-4">
+            <a href="/" className="hover:text-[#0097A7]">
+              Home
+            </a>
+            <a href="/about-me" className="hover:text-[#0097A7]">
+              About Me
+            </a>
+            <a href="/contact" className="hover:text-[#0097A7]">
+              Contact/Links
+            </a>
+          </div>
+        </div>
+      </nav>
+
+      {/* Mobile Navbar */}
+      <nav className="lg:hidden bg-[#37474F] text-[#F2E8CF]">
+        <div className="px-4 py-2 flex justify-between items-center">
+          <a href="/" className="text-3xl font-bold">
+            Audionest
+          </a>
+          <button onClick={handleShowOffCanvas} className="text-[#F2E8CF]">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="h-8 w-8"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            >
+              <path d="M4 6h16M4 12h16m-7 6h7" />
+            </svg>
+          </button>
+        </div>
+      </nav>
+
+      {/* Offcanvas Menu */}
+      {showOffCanvas && (
+        <div className="fixed inset-0 bg-[#37474F] text-[#F2E8CF] z-50 px-4 py-2">
+          <div className="flex justify-between items-center">
+            <h2 className="text-3xl font-bold">AudioNest</h2>
+            <button onClick={handleCloseOffCanvas} className="text-4xl">
+              &times; {/* Close Icon */}
+            </button>
+          </div>
+          <div className="mt-4">
+            <nav className="space-y-2">
+              <Link
+                href="/about-me"
+                className="block hover:text-[#0097A7] py-2"
+              >
+                About Me
+              </Link>
+              <Link
+                href="/contact"
+                className="block hover:text-[#0097A7] py-2"
+              >
+                Contact/Links
+              </Link>
+            </nav>
+          </div>
+        </div>
+      )}
+    </div>
   );
 }

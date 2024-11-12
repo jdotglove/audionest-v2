@@ -1,5 +1,4 @@
 import React from "react";
-import { Button } from "react-bootstrap";
 
 import PlaylistContext from "../../contexts/PlaylistContext";
 import PlaylistProvider from "../../providers/PlaylistProvider";
@@ -15,13 +14,8 @@ export default function PlaylistSelector({
     <PlaylistProvider>
       <PlaylistContext.Consumer>
         {({ getPlaylistTracks }) => (
-          <Button
-            variant="outline-info"
-            style={{
-              justifyContent: "space-between",
-              textTransform: "none",
-              borderRadius: "25px",
-            }}
+          <button
+            className="flex justify-between items-center border border-[#98611F] text-white rounded-full py-2 px-4 w-full mb-2 hover:bg-[#98611F] hover:text-[#2D3748] transition-all duration-300"
             onClick={async () => {
               await setSelectedPlaylist({
                 uri: playlist.uri,
@@ -31,7 +25,7 @@ export default function PlaylistSelector({
             }}
           >
             {playlist ? playlist.name : ""}
-          </Button>
+          </button>
         )}
       </PlaylistContext.Consumer>
     </PlaylistProvider>

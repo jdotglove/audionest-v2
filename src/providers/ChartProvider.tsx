@@ -68,7 +68,7 @@ class ChartProvider extends React.PureComponent<
     datasets: tracksData.map((trackData) => ({
       data: Object.values(trackData).map((datum: number) => datum * 100),
       backgroundColor: "rgba(13, 202, 240, 0.2)",
-      borderColor: "#0dcaf0",
+      borderColor: "#0097A7",
       borderWidth: 2,
     })),
   });

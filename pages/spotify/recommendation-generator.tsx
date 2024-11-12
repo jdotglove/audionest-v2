@@ -1,4 +1,4 @@
-import { Fragment } from "react";
+import React from "react";
 import { Container } from "react-bootstrap";
 
 import CrateDiggerInfo from "../../src/components/Modals/CrateDiggerInfo";
@@ -9,18 +9,18 @@ import ChartProvider from "../../src/providers/ChartProvider";
 
 export default function RecommendationGeneratorPage() {
   return (
-    <Fragment>
+    <div className="flex flex-col min-h-screen bg-[#1B1F24] text-[#F2E8CF]">
       <SpotifyProvider>
         <SpotifyNavbar />
-        <Fragment>
+        <React.Fragment>
           <CrateDiggerInfo />
-          <Container className="py-3">
+          <section className="container self-center py-3">
             <ChartProvider>
               <RecommendationGeneratorContainer />
             </ChartProvider>
-          </Container>
-        </Fragment>
+          </section>
+        </React.Fragment>
       </SpotifyProvider>
-    </Fragment>
+    </div>
   );
 }
