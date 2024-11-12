@@ -4,7 +4,6 @@ import { Button, Container, Row, Col } from "react-bootstrap";
 
 import MainNavbar from "../src/components/Navbars/MainNavbar";
 import SpotifyContext from "../src/contexts/SpotifyContext";
-import styles from "../styles/Integrations.module.css";
 import { authenticateSpotify } from "../src/middleware/spotify";
 
 
@@ -17,7 +16,7 @@ export default function Integrations() {
   };
 
   return (
-    <div className={styles.container}>
+    <div>
       <MainNavbar />
       <SpotifyContext.Consumer>
         {({ isLoggedIn }) =>
