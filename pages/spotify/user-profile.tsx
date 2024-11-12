@@ -1,5 +1,4 @@
-import { Fragment } from "react";
-import { Container } from "react-bootstrap";
+import React from "react";
 
 import SpotifyNavbar from "../../src/components/Navbars/SpotifyNavbar";
 import UserProfileContainer from "../../src/components/Containers/UserProfileContainer";
@@ -7,13 +6,13 @@ import SpotifyProvider from "../../src/providers/SpotifyProvider";
 
 export default function UserProfilePage() {
   return (
-    <Fragment>
+    <div className="flex flex-col min-h-screen bg-[#1B1F24] text-[#F2E8CF]">
       <SpotifyProvider>
         <SpotifyNavbar />
-        <Container className="py-3">
+        <div className="container mx-auto py-6">
           <UserProfileContainer />
-        </Container>
+        </div>
       </SpotifyProvider>
-    </Fragment>
+    </div>
   );
 }
