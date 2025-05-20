@@ -1,8 +1,12 @@
 declare module Audionest {
-    interface SpotifyModel {
+    export interface SpotifyModel {
       id: string;
-      uri: string
-    };
+      uri: string;
+      external_urls: {
+        spotify: string;
+      };
+    }
+
     export interface Artist extends SpotifyModel {
       genres: Array<string>;
       name: string;
@@ -51,9 +55,10 @@ declare module Audionest {
       popularity: number;
       trackNumber: number;
     };
-    export interface User extends SpotifyModel {
-      country: string;
-      display_name: string;
+    export interface User {
+      spotifyId: string;
+      spotifyUri: string;
+      displayName: string;
       email: string;
       images: Array<any>
       playlists: Array<any>;

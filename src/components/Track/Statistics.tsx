@@ -31,17 +31,17 @@ export default function TrackStatistics({
         chartData ? (
           <div className="gap-4 flex flex-col">
             {chartData.labels.map((label: string, idx) => (
-          <div
-            key={label}
-            className="bg-[#37474F] p-3 rounded-lg flex justify-between items-center"
-          >
-            <span className="font-semibold">{label}</span>
-            <span>{chartData?.datasets[0]?.data[idx]?.toFixed(2)}</span>
-          </div>
-        ))}
+              <div
+                key={label}
+                className="bg-background text-text p-3 rounded-lg flex justify-between items-center hover:bg-surface transition"
+              >
+                <span className="font-semibold">{label}</span>
+                <span>{chartData?.datasets[0]?.data[idx]?.toFixed(2)}</span>
+              </div>
+            ))}
           </div>
         ) : (
-          <p className="text-[#F2E8CF] text-center">
+          <p className="text-text-secondary text-center">
             Select a track to see analysis
           </p>
         )

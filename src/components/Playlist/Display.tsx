@@ -8,11 +8,14 @@ export default function PlaylistDisplay() {
   return (
     <SpotifyContext.Consumer>
       {({ playlists, setSelectedPlaylist }) => (
-        <div className="container mx-auto py-6">
-          {playlists.length > 0 && (
-            <div className="rounded-lg p-4 w-full max-w-xs mx-auto">
-              <h3 className="text-lg font-bold text-[#F2E8CF] mb-4">User Playlists</h3>
-              <div className="overflow-y-auto" style={{ height: "50rem" }}>
+        <div className="flex flex-col h-full">
+          {playlists.length > 0 ? (
+            <div className="flex flex-col h-full">
+              <div className="flex items-center gap-2 mb-4">
+                <span className="h-4 w-4 rounded-full bg-primary"></span>
+                <h3 className="text-lg font-semibold text-text">Your Playlists</h3>
+              </div>
+              <div className="overflow-y-auto flex-1 pr-2">
                 <ul className="space-y-2">
                   {playlists.map((playlist, idx) => (
                     <Fragment key={idx}>
@@ -24,6 +27,10 @@ export default function PlaylistDisplay() {
                   ))}
                 </ul>
               </div>
+            </div>
+          ) : (
+            <div className="flex items-center justify-center h-full">
+              <p className="text-text-secondary">No playlists found</p>
             </div>
           )}
         </div>

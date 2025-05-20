@@ -90,7 +90,7 @@ export default function DiscoveryDisplay() {
             style={{
               height: "40rem",
             }}
-            className="category-column overflow-scroll"
+            className="category-column overflow-scroll bg-surface"
           >
             <Nav variant="pills" className="flex-column">
               <Fragment>
@@ -101,6 +101,7 @@ export default function DiscoveryDisplay() {
                         eventKey={category}
                         disabled={isLoading}
                         onClick={async () => await handleNewCategory(category)}
+                        className="text-text hover:text-primary"
                       >
                         {category}{" "}
                         {idx === 0 ? (
@@ -119,24 +120,24 @@ export default function DiscoveryDisplay() {
             <Tab.Content>
               <Tab.Pane eventKey={currentCategory}>
                 <Card
-                  className="responsive"
+                  className="responsive bg-surface"
                   style={{ height: "55rem", width: "100%" }}
                 >
-                  <Card.Header as="h2" style={{ textAlign: "center" }}>
+                  <Card.Header as="h2" className="text-text text-center">
                     {currentCategory === "New Releases" ? (
                       <Fragment>{currentCategory}</Fragment>
                     ) : (
                       <Fragment>{currentCategory} Playlists</Fragment>
                     )}
                   </Card.Header>
-                  <Card.Body className="overflow-scroll">
+                  <Card.Body className="overflow-scroll bg-background">
                     <InfiniteScroll
-                      dataLength={categoryItems.length * 2} //This is important field to render the next data
+                      dataLength={categoryItems.length * 2}
                       next={() => fetchData(categoryItems, currentCategory)}
                       hasMore={hasMore}
-                      loader={<h4>Loading...</h4>}
+                      loader={<h4 className="text-text">Loading...</h4>}
                       endMessage={
-                        <p style={{ textAlign: "center" }}>
+                        <p className="text-text text-center">
                           <b>Yay! You have seen it all</b>
                         </p>
                       }
@@ -150,21 +151,23 @@ export default function DiscoveryDisplay() {
                                   <a
                                     onClick={() => handleMoreInfo(categoryItem)}
                                     href={`#more-info-${categoryItem.id}`}
+                                    className="hover:opacity-90 transition"
                                   >
                                     <img
                                       src={categoryItem.images[0]?.url}
                                       alt={`${categoryItem.name}-image`}
                                       width={categoryItem.images[0]?.width}
                                       height={categoryItem.images[0]?.height}
+                                      className="rounded-lg"
                                     />
-                                    <div className="album-name">
-                                    {categoryItem.artists ? (
+                                    <div className="album-name text-text">
+                                      {categoryItem.artists ? (
                                         categoryItem.artists[0].name
                                       ) : (
                                         categoryItem.name
                                       )}
                                     </div>
-                                    <div className="more-info">
+                                    <div className="more-info text-text-secondary">
                                       Click for More Info
                                     </div>
                                   </a>

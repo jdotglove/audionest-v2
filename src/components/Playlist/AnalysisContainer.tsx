@@ -7,13 +7,13 @@ export default function PlaylistAnalysisContainer() {
   return (
     <div className="container mx-auto py-6">
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-        <div className="bg-[#2D3748] p-4 rounded-lg shadow-lg">
+        <div className="bg-surface rounded-lg shadow-lg p-4 border border-border">
           <PlaylistDisplay />
         </div>
-        <div className="bg-[#2D3748] p-4 rounded-lg shadow-lg">
+        <div className="bg-surface rounded-lg shadow-lg p-4 border border-border">
           <PlaylistDetails />
         </div>
-        <div className="bg-[#2D3748] p-4 rounded-lg shadow-lg">
+        <div className="bg-surface rounded-lg shadow-lg p-4 border border-border">
           <TrackStatistics />
         </div>
       </div>

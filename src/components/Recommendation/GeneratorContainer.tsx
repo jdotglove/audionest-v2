@@ -14,14 +14,14 @@ export default function RecommendationGeneratorContainer() {
       {({ isLoggedIn, user }) =>
         !isLoggedIn ? (
           <div className="container mx-auto px-4 py-6">
-            <h2 className="text-xl font-bold text-[#F2E8CF] pt-3">
+            <h2 className="text-xl font-bold text-text-secondary pt-3">
               Please log in to see recommendations.
             </h2>
           </div>
         ) : (
           <PlaylistProvider>
             <RecommendationProvider>
-              <div className="min-h-[90dvh] container bg-[#2D3748] mx-auto px-4 py-6">
+              <div className="min-h-[90dvh] container bg-surface mx-auto px-4 py-6">
                 <RecommendationContext.Consumer>
                   {({
                     dismissAddToQueueAlert,
@@ -33,11 +33,11 @@ export default function RecommendationGeneratorContainer() {
                     targetAudioFeaturesMap,
                     toggleShowSeedSearch,
                   }) => (
-                    <div className="bg-[#37474F] text-[#F2E8CF] rounded-lg shadow-lg p-4 mb-4">
+                    <div className="bg-background text-text rounded-lg shadow-lg p-4 mb-4">
                       <h5 className="text-lg font-semibold">
                         Selected Seeds (Max 5 in total)
                       </h5>
-                      <div className="mt-2 text-white">
+                      <div className="mt-2">
                         <p>
                           <strong>Tracks: </strong>
                           {selectedSeedTracks.length > 0 ? (
@@ -89,13 +89,13 @@ export default function RecommendationGeneratorContainer() {
                       </div>
                       <div className="mt-4 gap-x-2 flex justify-between">
                         <button
-                          className="bg-[#0097A7] text-[#2D3748] py-2 px-4 rounded hover:bg-[#0aabb0]"
+                          className="bg-primary text-text py-2 px-4 rounded hover:bg-primary-dark transition"
                           onClick={() => toggleShowSeedSearch(true)}
                         >
                           Add Seeds
                         </button>
                         <button
-                          className="bg-[#98611F] text-white py-2 px-4 rounded hover:bg-[#7c4d1f]"
+                          className="bg-secondary text-text py-2 px-4 rounded hover:bg-secondary-dark transition"
                           onClick={clearSelectedSeeds}
                         >
                           Clear Seeds
@@ -104,7 +104,7 @@ export default function RecommendationGeneratorContainer() {
                         <PlaylistContext.Consumer>
                           {({ toggleShowPlaylistBuilder }) => (
                             <button
-                              className="bg-[#2D3748] text-white py-2 px-4 rounded hover:bg-[#1c1f22]"
+                              className="bg-surface text-text py-2 px-4 rounded hover:bg-surface-dark transition"
                               onClick={() => toggleShowPlaylistBuilder(true)}
                             >
                               View Playlist
@@ -114,16 +114,20 @@ export default function RecommendationGeneratorContainer() {
                       </div>
                       {showQueueAlert && (
                         <div
-                          className={`mt-4 p-3 rounded`}
+                          className={`mt-4 p-3 rounded ${
+                            queueAddResult === "success"
+                              ? "bg-success text-text"
+                              : "bg-error text-text"
+                          }`}
                         >
                           {queueAddResult === "success"
                             ? "Added To Queue!"
                             : "Error Adding To Queue"}
                           <button
-                            className="float-right text-black"
+                            className="float-right hover:text-text-secondary transition text-3xl"
                             onClick={dismissAddToQueueAlert}
                           >
-                            &times; {/* Close button */}
+                            &times;
                           </button>
                         </div>
                       )}
