@@ -56,7 +56,7 @@ export default function SpotifyNavbar() {
         </div>
         <section className="px-5 text-lg self-center">
           <div className="hidden lg:flex text-lg w-[20dvw] items-center justify-end text-text-secondary">
-            <span className="mr-2">Welcome, {user?.display_name}!</span>
+            <span className="mr-2">Welcome, {user?.displayName}!</span>
             {user?.images[0] && (
               <img
                 src={user.images[0].url}
