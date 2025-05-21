@@ -2,13 +2,6 @@
     "name": "audionest",
     "version": "0.1.0",
     "private": true,
-    "cacheDirectories": [
-        ".next/cache"
-    ],
-    "engines": {
-        "node": "18.x",
-        "npm": "6.x"
-    },
     "scripts": {
         "dev": "next dev",
         "build": "next build",
