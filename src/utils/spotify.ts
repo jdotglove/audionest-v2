@@ -32,4 +32,3 @@ export const generateCodeVerifier = (length: number) => {
     : ''
   );
   
-  export const parseUriForId = (spotifyUri: string) => spotifyUri.split(':')[2];

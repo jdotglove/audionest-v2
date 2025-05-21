@@ -1,11 +1,9 @@
 import React, { Fragment, useState, useRef, useContext } from "react";
 import NextImage from "next/image";
-import { parseUriForId } from "../../utils/spotify";
 import placeholderImg from "../../../public/placeholder.png";
 import PlaylistContext from "../../contexts/PlaylistContext";
 
 export default function RecommendationSelection({ user }) {
-  const userSpotifyId = parseUriForId(user.uri);
   const playlistTitleInput = useRef(null);
   const playlistDescriptionInput = useRef(null);
   const [modalOpen, setModalOpen] = useState(false);
@@ -19,7 +17,7 @@ export default function RecommendationSelection({ user }) {
   const handleSave = () => {
     const title = playlistTitleInput.current.value;
     const description = playlistDescriptionInput.current.value;
-    savePlaylist(userSpotifyId, title, description);
+    savePlaylist(user.spotifyId, title, description);
     handleCloseModal();
     toggleShowPlaylistBuilder(false);
     clearPlaylistBuilder();
@@ -38,7 +36,7 @@ export default function RecommendationSelection({ user }) {
             {/* Modal for Playlist Details */}
             {modalOpen && (
               <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-75">
-                <div className="bg-[#2D3748] text-[#F2E8CF] rounded-lg shadow-lg p-6 w-96">
+                <div className="bg-surface text-text rounded-lg shadow-lg p-6 w-96">
                   <h2 className="text-xl font-bold mb-4">
                     Set Playlist Details
                   </h2>
@@ -48,7 +46,7 @@ export default function RecommendationSelection({ user }) {
                       type="text"
                       ref={playlistTitleInput}
                       aria-label="Playlist Title"
-                      className="w-full bg-[#37474F] text-[#F2E8CF] p-2 rounded"
+                      className="w-full bg-background text-text p-2 rounded"
                     />
                   </div>
                   <div className="mb-4">
@@ -57,18 +55,18 @@ export default function RecommendationSelection({ user }) {
                       maxLength={150}
                       ref={playlistDescriptionInput}
                       aria-label="Playlist Description"
-                      className="w-full bg-[#37474F] text-[#F2E8CF] p-2 rounded"
+                      className="w-full bg-background text-text p-2 rounded"
                     />
                   </div>
                   <div className="flex justify-between">
                     <button
-                      className="bg-red-500 text-white py-2 px-4 rounded hover:bg-red-600"
+                      className="bg-primary-dark text-text py-2 px-4 rounded hover:bg-primary"
                       onClick={handleCloseModal}
                     >
                       Close
                     </button>
                     <button
-                      className="bg-[#0dcaf0] text-white py-2 px-4 rounded hover:bg-[#0aabb0]"
+                      className="bg-primary text-text py-2 px-4 rounded hover:bg-primary-dark"
                       onClick={handleSave}
                     >
                       Save
@@ -81,12 +79,12 @@ export default function RecommendationSelection({ user }) {
             {/* Offcanvas for Playlist Builder */}
             {showPlaylistBuilder && (
               <div className="fixed inset-0 bg-black bg-opacity-50 z-40">
-                <div className="fixed lg:w-[30dvw] inset-0 lg:right-0 lg:top-0 lg:h-full bg-[#37474F] text-[#F2E8CF] z-50 px-4 py-2">
+                <div className="fixed lg:w-[30dvw] inset-0 lg:right-0 lg:top-0 lg:h-full bg-surface text-text z-50 px-4 py-2">
                 <div className="flex justify-between items-center mb-4">
                   <h2 className="text-lg font-bold">Playlist Builder</h2>
                   {selectedTracks.length > 0 && (
                     <button
-                      className="bg-green-500 text-white py-1 px-2 rounded hover:bg-green-600"
+                      className="bg-secondary text-text py-1 px-2 rounded hover:bg-secondary-dark"
                       onClick={handleOpenModal}
                     >
                       Save Playlist
@@ -101,28 +99,36 @@ export default function RecommendationSelection({ user }) {
                     {selectedTracks.map((track) => (
                       <li
                         key={track.id}
-                        className="flex items-center justify-between bg-[#37474F] p-2 rounded hover:bg-[#0dcaf0] transition cursor-pointer"
-                        onClick={() => removeFromPlaylistBuilder(track)}
+                        className="flex items-center justify-between bg-surface p-2  transition group"
                       >
-                        {track.album.images[0] ? (
-                          <img
-                            src={track.album.images[0]?.url}
-                            height={55}
-                            width={55}
-                            className="rounded-full"
-                            alt="Track Picture"
-                          />
-                        ) : (
-                          <img
-                            src={placeholderImg.src}
-                            height={55}
-                            width={55}
-                            alt="Default Track Picture"
-                          />
-                        )}
-                        <span className="px-2">
-                          {track.name} - {track.artists[0].name}
-                        </span>
+                        <div className="flex items-center gap-3">
+                          {track.album.images[0] ? (
+                            <img
+                              src={track.album.images[0]?.url}
+                              height={55}
+                              width={55}
+                              className="rounded-full"
+                              alt="Track Picture"
+                            />
+                          ) : (
+                            <img
+                              src={placeholderImg.src}
+                              height={55}
+                              width={55}
+                              alt="Default Track Picture"
+                            />
+                          )}
+                          <span className="px-2 transition-colors">
+                            {track.name} - {track.artists[0].name}
+                          </span>
+                        </div>
+                        <button
+                          onClick={() => removeFromPlaylistBuilder(track)}
+                          className="text-text-secondary hover:text-error transition-colors p-2 text-3xl"
+                          aria-label="Remove track"
+                        >
+                          ×
+                        </button>
                       </li>
                     ))}
                   </ul>

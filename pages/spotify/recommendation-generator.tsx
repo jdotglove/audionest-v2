@@ -9,7 +9,7 @@ import ChartProvider from "../../src/providers/ChartProvider";
 
 export default function RecommendationGeneratorPage() {
   return (
-    <div className="flex flex-col min-h-screen bg-[#1B1F24] text-[#F2E8CF]">
+    <div className="flex flex-col min-h-screen bg-background text-text">
       <SpotifyProvider>
         <SpotifyNavbar />
         <React.Fragment>

@@ -38,6 +38,7 @@ export interface SpotifyProviderState extends BaseSpotifyState {
     tracks: Array<any> | null;
   };
   currentSelectedTracks: Array<any>;
+  loginLoading: boolean;
   genreSeeds: any;
   isLoggedIn: boolean;
   playlists: Array<any>;

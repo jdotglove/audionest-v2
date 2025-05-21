@@ -7,10 +7,10 @@ import textStyles from "../styles/Text.module.css";
 
 export default function AboutMe() {
   return (
-    <div className="flex flex-col min-h-screen bg-[#1B1F24] text-[#F2E8CF]">
+    <div className="flex flex-col min-h-screen bg-background text-text">
       <MainNavbar />
       <main className="flex-grow container mx-auto px-4 py-3">
-        <h1 className="text-3xl font-semibold text-[#0097A7]">About Me</h1>
+        <h1 className="text-3xl font-semibold text-primary">About Me</h1>
         <div className="mt-4">
           <p>Hello, my name is Jarod Glover. Welcome!</p>
         </div>
@@ -42,8 +42,8 @@ export default function AboutMe() {
           />
         </div>
       </main>
-      <footer className="bg-[#37474F] py-4 mt-12">
-        <div className="text-center text-[#E0E0E0]">
+      <footer className="bg-surface py-4 mt-12">
+        <div className="text-center text-text-secondary">
           &copy; {new Date().getFullYear()} Audionest. All Rights Reserved.
         </div>
       </footer>

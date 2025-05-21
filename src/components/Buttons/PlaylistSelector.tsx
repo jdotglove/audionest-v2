@@ -15,7 +15,7 @@ export default function PlaylistSelector({
       <PlaylistContext.Consumer>
         {({ getPlaylistTracks }) => (
           <button
-            className="flex justify-between items-center border border-[#98611F] text-white rounded-full py-2 px-4 w-full mb-2 hover:bg-[#98611F] hover:text-[#2D3748] transition-all duration-300"
+            className="w-full bg-background text-text rounded-lg py-2 px-4 border border-border hover:bg-surface hover:border-primary hover:text-primary transition-all duration-300 flex items-center justify-between group"
             onClick={async () => {
               await setSelectedPlaylist({
                 uri: playlist.uri,
@@ -24,7 +24,10 @@ export default function PlaylistSelector({
               });
             }}
           >
-            {playlist ? playlist.name : ""}
+            <span className="font-medium truncate">{playlist ? playlist.name : ""}</span>
+            <span className="text-text-secondary group-hover:text-primary transition-colors">
+              →
+            </span>
           </button>
         )}
       </PlaylistContext.Consumer>

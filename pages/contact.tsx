@@ -4,11 +4,11 @@ import MainNavbar from "../src/components/Navbars/MainNavbar";
 
 export default function Contact() {
   return (
-    <div className="bg-[#1B1F24] text-[#F2E8CF] min-h-screen">
+    <div className="bg-background text-text min-h-screen">
       <MainNavbar />
       <div className="container mx-auto px-4 py-6">
         <main className="pt-3">
-          <h1 className="text-3xl font-semibold text-[#0097A7]">
+          <h1 className="text-3xl font-semibold text-primary">
             Contact Information
           </h1>
         </main>
@@ -17,7 +17,7 @@ export default function Contact() {
             <strong>Email: </strong>
             <a
               href="mailto:glover.jarod@gmail.com"
-              className="text-[#0097A7] hover:underline"
+              className="text-primary hover:underline"
             >
               glover.jarod@gmail.com
             </a>
@@ -28,7 +28,7 @@ export default function Contact() {
               <li>
                 <a
                   href="https://www.linkedin.com/in/jarod-glover/"
-                  className="text-[#0097A7] hover:underline"
+                  className="text-primary hover:underline"
                 >
                   LinkedIn
                 </a>
@@ -36,7 +36,7 @@ export default function Contact() {
               <li>
                 <a
                   href="https://github.com/jdotglove"
-                  className="text-[#0097A7] hover:underline"
+                  className="text-primary hover:underline"
                 >
                   Github
                 </a>

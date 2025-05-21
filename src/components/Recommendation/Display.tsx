@@ -1,14 +1,12 @@
 import React from "react";
 import NextImage from "next/image";
 import CurrentTrackBreakdown from "../Containers/CurrentTrackBreakdown";
-import { parseUriForId } from "../../utils/spotify";
 import placeholderImg from "../../../public/placeholder.png";
 import RecommendationContext from "../../contexts/RecommendationContext";
 import PlaylistContext from "../../contexts/PlaylistContext";
 import ChartContext from "../../contexts/ChartContext";
 
 export default function RecommendationDisplay({ user }) {
-  const userSpotifyId = parseUriForId(user.uri);
   const { chartData } = React.useContext(ChartContext);
 
   return (
@@ -25,10 +23,10 @@ export default function RecommendationDisplay({ user }) {
           seedCurrentVibes,
         }) => (
           <React.Fragment>
-            <div className="container bg-[#37474F] mx-auto px-4 py-6 gap-3 flex flex-row justify-center lg:justify-start">
+            <div className="container bg-surface mx-auto px-4 py-6 gap-3 flex flex-row justify-center lg:justify-start">
               <div className="lg:w-1/2">
                 <button
-                  className="mt-1 bg-[#0097A7] text-[#2D3748] py-2 px-4 rounded hover:bg-[#0aabb0] transition"
+                  className="mt-1 bg-primary text-text py-2 px-4 rounded hover:bg-primary-dark transition"
                   onClick={generateRecommendations}
                   disabled={!atLeastOneSeedSelected()}
                 >
@@ -37,14 +35,14 @@ export default function RecommendationDisplay({ user }) {
               </div>
               <div className="hidden lg:flex lg:w-1/2 gap-3">
                 <button
-                  className="mt-1 bg-[#0097A7] text-[#2D3748] text-sm lg:text-lg py-2 px-4 rounded hover:bg-[#0aabb0] transition"
-                  onClick={() => retrieveCurrentTrackBreakdown(userSpotifyId)}
+                  className="mt-1 bg-primary text-text text-sm lg:text-lg py-2 px-4 rounded hover:bg-primary-dark transition"
+                  onClick={() => retrieveCurrentTrackBreakdown(user.spotifyId)}
                 >
                   Retrieve Current Vibes
                 </button>{" "}
                 {currentTrackBreakdown && currentTrackBreakdown.item ? (
                   <button
-                    className="mt-1 bg-[#0097A7] text-[#2D3748] text-sm lg:text-lg py-2 px-4 rounded hover:bg-[#0aabb0] transition"
+                    className="mt-1 bg-primary text-text text-sm lg:text-lg py-2 px-4 rounded hover:bg-primary-dark transition"
                     onClick={async () => {
                       await clearSelectedSeeds();
                       await seedCurrentVibes(
@@ -63,7 +61,7 @@ export default function RecommendationDisplay({ user }) {
             </div>
             <div className="flex flex-col lg:flex-row">
               <div className="lg:w-1/2">
-                <div className="bg-[#1B1F24] text-[#F2E8CF] m-4 rounded-lg shadow-lg max-h-[40dvh] overflow-y-auto mx-2">
+                <div className="bg-background text-text m-4 rounded-lg shadow-lg max-h-[40dvh] overflow-y-auto mx-2">
                   {!!recommendedTrackList.length && (
                     <ul className="list-none p-4">
                       {recommendedTrackList.map((track) => (
@@ -92,17 +90,18 @@ export default function RecommendationDisplay({ user }) {
                           </span>
                           <PlaylistContext.Consumer>
                             {({ addToPlaylistBuilder }) => (
-                              <div className="flex gap-2">
+                              <div className="flex gap-2 items-center">
                                 <button
-                                  className="text-[#0097A7] hover:underline"
+                                  className="text-primary hover:underline"
                                   onClick={() => addToPlaylistBuilder(track)}
                                 >
                                   Add To Playlist
                                 </button>
+                                <span className="text-text-secondary">|</span>
                                 <button
-                                  className="text-[#0097A7] hover:underline"
+                                  className="text-primary hover:underline"
                                   onClick={() =>
-                                    addToQueue(userSpotifyId, track)
+                                    addToQueue(user.spotifyId, track)
                                   }
                                 >
                                   Queue

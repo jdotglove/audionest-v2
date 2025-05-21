@@ -6,6 +6,7 @@ import { SpotifyProviderProps, SpotifyProviderState } from "../../types";
 import SpotifyContext from "../contexts/SpotifyContext";
 import { authenticateSpotify } from "../middleware/spotify";
 import { SpotifyCache } from "../cache";
+import { set } from "animejs";
 // credentials are optional
 
 class SpotifyProvider extends React.PureComponent<
@@ -27,6 +28,7 @@ class SpotifyProvider extends React.PureComponent<
       token: "",
       topTracks: [],
       topArtists: [],
+      loginLoading: false,
       trackSearchResults: [],
     };
   }
@@ -36,8 +38,10 @@ class SpotifyProvider extends React.PureComponent<
     if (!accessToken) {
       accessToken = (await getURLHash() as { access_token: string }).access_token;
     }
-    if (accessToken && !this.state.isLoggedIn) {
+    if ((accessToken && !this.state.isLoggedIn) || !this.state.loginLoading) {
+      this.setState({ loginLoading: true });
       await this.login(accessToken);
+      this.setState({ loginLoading: false });
     }
     window.location.hash = ""
     sessionStorage.setItem("accessToken", accessToken);
@@ -58,9 +62,9 @@ class SpotifyProvider extends React.PureComponent<
           password: "",
         }),
       });
-      await this.loadUserTopArtists(response.data.id, accessToken);
-      await this.loadUserTopTracks(response.data.id, accessToken);
-      await this.loadUserPlaylists(response.data.id, accessToken);
+      await this.loadUserTopArtists(response.data.spotifyId, accessToken);
+      await this.loadUserTopTracks(response.data.spotifyId, accessToken);
+      await this.loadUserPlaylists(response.data.spotifyId, accessToken);
       this.setState({
         user: { ...response.data },
         isLoggedIn: true,
@@ -149,6 +153,7 @@ class SpotifyProvider extends React.PureComponent<
           "Content-Type": "application/json",
         },
       });
+      console.log(response.data);
       this.setState({ playlists: [...(response?.data || [])] });
     } catch (error: any) {
       if (error.response?.status === 401) {

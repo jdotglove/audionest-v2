@@ -10,7 +10,7 @@ export default function TrackSelector({
     <ChartContext.Consumer>
       {({ setChartData }) => (
         <div
-          className="bg-[#37474F] text-[#F2E8CF] p-3 rounded-lg cursor-pointer mb-2 hover:bg-[#98611F] hover:text-[#1B1F24] transition-all duration-300"
+          className="bg-surface text-text p-3 rounded-lg cursor-pointer mb-2 hover:bg-primary hover:text-text transition-all duration-300"
           onClick={async () => {
             await setChartData([track.id]);
           }}

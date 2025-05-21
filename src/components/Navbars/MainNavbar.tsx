@@ -26,32 +26,21 @@ export default function MainNavbar() {
   return (
     <div>
       {/* Desktop Navbar */}
-      <nav className="hidden lg:flex bg-[#37474F] text-[#F2E8CF]">
+      <nav className="hidden lg:flex bg-surface text-text">
         <div className="container px-4 py-2 flex gap-5 items-center">
           <a href="/" className="text-3xl font-bold">
             Audionest
           </a>
-          <div className="flex text-xl space-x-4">
-            <a href="/" className="hover:text-[#0097A7]">
-              Home
-            </a>
-            <a href="/about-me" className="hover:text-[#0097A7]">
-              About Me
-            </a>
-            <a href="/contact" className="hover:text-[#0097A7]">
-              Contact/Links
-            </a>
-          </div>
         </div>
       </nav>
 
       {/* Mobile Navbar */}
-      <nav className="lg:hidden bg-[#37474F] text-[#F2E8CF]">
+      <nav className="lg:hidden bg-surface text-text">
         <div className="px-4 py-2 flex justify-between items-center">
           <a href="/" className="text-3xl font-bold">
             Audionest
           </a>
-          <button onClick={handleShowOffCanvas} className="text-[#F2E8CF]">
+          <button onClick={handleShowOffCanvas} className="text-text">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               className="h-8 w-8"
@@ -70,7 +59,7 @@ export default function MainNavbar() {
 
       {/* Offcanvas Menu */}
       {showOffCanvas && (
-        <div className="fixed inset-0 bg-[#37474F] text-[#F2E8CF] z-50 px-4 py-2">
+        <div className="fixed inset-0 bg-surface text-text z-50 px-4 py-2">
           <div className="flex justify-between items-center">
             <h2 className="text-3xl font-bold">AudioNest</h2>
             <button onClick={handleCloseOffCanvas} className="text-4xl">
@@ -81,13 +70,13 @@ export default function MainNavbar() {
             <nav className="space-y-2">
               <Link
                 href="/about-me"
-                className="block hover:text-[#0097A7] py-2"
+                className="block hover:text-primary py-2"
               >
                 About Me
               </Link>
               <Link
                 href="/contact"
-                className="block hover:text-[#0097A7] py-2"
+                className="block hover:text-primary py-2"
               >
                 Contact/Links
               </Link>
