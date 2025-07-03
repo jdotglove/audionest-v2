@@ -2,7 +2,6 @@ import React, { Fragment } from "react";
 
 import axios from "../plugins/axios";
 import { DiscoveryProviderState, DiscoveryProviderProps } from "../../types";
-import { SpotifyCache } from "../cache";
 import DiscoveryContext from "../contexts/DiscoveryContext";
 import { authenticateSpotify } from "../middleware/spotify";
 
@@ -23,9 +22,10 @@ class DiscoveryProvider extends React.PureComponent<
       const accessToken = sessionStorage.getItem("accessToken");
       const response = await axios({
         url: `${process.env.NEXT_PUBLIC_BASE_SPOTIFY_API_URL}/discovery/new-releases?token=${accessToken}&page=${page}`,
-        method: "get",
+        method: "GET",
         headers: {
-          authorization: process.env.NEXT_PUBLIC_SERVER_API_KEY,
+          Authorization: `Bearer ${process.env.NEXT_PUBLIC_SERVER_API_KEY}`,
+          Accept: "application/json",
           "Content-Type": "application/json",
         },
       });
@@ -49,9 +49,10 @@ class DiscoveryProvider extends React.PureComponent<
       const accessToken = sessionStorage.getItem("accessToken");
       const response = await axios({
         url: `${process.env.NEXT_PUBLIC_BASE_SPOTIFY_API_URL}/discovery/${category}/playlists?token=${accessToken}&page=${page}`,
-        method: "get",
+        method: "GET",
         headers: {
-          authorization: process.env.NEXT_PUBLIC_SERVER_API_KEY,
+          Authorization: `Bearer ${process.env.NEXT_PUBLIC_SERVER_API_KEY}`,
+          Accept: "application/json",
           "Content-Type": "application/json",
         },
       });
@@ -77,9 +78,10 @@ class DiscoveryProvider extends React.PureComponent<
       console.log("Id: ", categoryItemId);
       const response = await axios({
         url: `${process.env.NEXT_PUBLIC_BASE_SPOTIFY_API_URL}/${itemType}/${categoryItemId}?token=${accessToken}`,
-        method: "get",
+        method: "GET",
         headers: {
-          authorization: process.env.NEXT_PUBLIC_SERVER_API_KEY,
+          Authorization: `Bearer ${process.env.NEXT_PUBLIC_SERVER_API_KEY}`,
+          Accept: "application/json",
           "Content-Type": "application/json",
         },
       });
@@ -102,9 +104,10 @@ class DiscoveryProvider extends React.PureComponent<
       const accessToken = sessionStorage.getItem("accessToken");
       const response = await axios({
         url: `${process.env.NEXT_PUBLIC_BASE_SPOTIFY_API_URL}/${itemType}/${categoryItemId}/tracks?token=${accessToken}`,
-        method: "get",
+        method: "GET",
         headers: {
-          authorization: process.env.NEXT_PUBLIC_SERVER_API_KEY,
+          Authorization: `Bearer ${process.env.NEXT_PUBLIC_SERVER_API_KEY}`,
+          Accept: "application/json",
           "Content-Type": "application/json",
         },
       })
@@ -126,9 +129,10 @@ class DiscoveryProvider extends React.PureComponent<
       const accessToken = sessionStorage.getItem("accessToken");
       const response = await axios({
         url: `${process.env.NEXT_PUBLIC_BASE_SPOTIFY_API_URL}/discovery/categories?token=${accessToken}`,
-        method: "get",
+        method: "GET",
         headers: {
-          authorization: process.env.NEXT_PUBLIC_SERVER_API_KEY,
+          Authorization: `Bearer ${process.env.NEXT_PUBLIC_SERVER_API_KEY}`,
+          Accept: "application/json",
           "Content-Type": "application/json",
         },
       });

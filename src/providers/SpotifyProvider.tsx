@@ -5,8 +5,6 @@ import { getURLHash } from "../utils/spotify";
 import { SpotifyProviderProps, SpotifyProviderState } from "../../types";
 import SpotifyContext from "../contexts/SpotifyContext";
 import { authenticateSpotify } from "../middleware/spotify";
-import { SpotifyCache } from "../cache";
-import { set } from "animejs";
 // credentials are optional
 
 class SpotifyProvider extends React.PureComponent<
@@ -52,16 +50,18 @@ class SpotifyProvider extends React.PureComponent<
       const fetchUrl = `${process.env.NEXT_PUBLIC_BASE_SPOTIFY_API_URL}/user/login?token=${accessToken}`;
       const response = await axios({
         url: fetchUrl,
-        method: "post",
+        method: "POST",
         headers: {
-          authorization: process.env.NEXT_PUBLIC_SERVER_API_KEY,
-          "Content-Type": "application/json",
+          Authorization: `Bearer ${process.env.NEXT_PUBLIC_SERVER_API_KEY}`,
+          Accept: "application/json",
+          "Content-Type": "text/plain",
         },
         data: JSON.stringify({
           username: "",
           password: "",
         }),
       });
+
       await this.loadUserTopArtists(response.data.spotifyId, accessToken);
       await this.loadUserTopTracks(response.data.spotifyId, accessToken);
       await this.loadUserPlaylists(response.data.spotifyId, accessToken);
@@ -88,9 +88,10 @@ class SpotifyProvider extends React.PureComponent<
       const accessToken = token ?? sessionStorage.getItem("accessToken");
       const response = await axios({
         url: `${process.env.NEXT_PUBLIC_BASE_SPOTIFY_API_URL}/user/${userSpotifyId}/top-artists?token=${accessToken}`,
-        method: "get",
+        method: "GET",
         headers: {
-          authorization: process.env.NEXT_PUBLIC_SERVER_API_KEY,
+          Authorization: `Bearer ${process.env.NEXT_PUBLIC_SERVER_API_KEY}`,
+          Accept: "application/json",
           "Content-Type": "application/json",
         },
       });
@@ -118,9 +119,10 @@ class SpotifyProvider extends React.PureComponent<
       const accessToken = token ?? sessionStorage.getItem("accessToken");
       const response = await axios({
         url: `${process.env.NEXT_PUBLIC_BASE_SPOTIFY_API_URL}/user/${userSpotifyId}/top-tracks?token=${accessToken}`,
-        method: "get",
+        method: "GET",
         headers: {
-          authorization: process.env.NEXT_PUBLIC_SERVER_API_KEY,
+          Authorization: `Bearer ${process.env.NEXT_PUBLIC_SERVER_API_KEY}`,
+          Accept: "application/json",
           "Content-Type": "application/json",
         },
       });
@@ -147,9 +149,10 @@ class SpotifyProvider extends React.PureComponent<
       const accessToken = token ?? sessionStorage.getItem("accessToken");
       const response = await axios({
         url: `${process.env.NEXT_PUBLIC_BASE_SPOTIFY_API_URL}/user/${userSpotifyId}/playlists?token=${accessToken}`,
-        method: "get",
+        method: "GET",
         headers: {
-          authorization: process.env.NEXT_PUBLIC_SERVER_API_KEY,
+          Authorization: `Bearer ${process.env.NEXT_PUBLIC_SERVER_API_KEY}`,
+          Accept: "application/json",
           "Content-Type": "application/json",
         },
       });
@@ -173,9 +176,10 @@ class SpotifyProvider extends React.PureComponent<
       const accessToken = sessionStorage.getItem("accessToken");
       const response = await axios({
         url: `${process.env.NEXT_PUBLIC_BASE_SPOTIFY_API_URL}/${searchType}/search?token=${accessToken}`,
-        method: "post",
+        method: "POST",
         headers: {
-          authorization: process.env.NEXT_PUBLIC_SERVER_API_KEY,
+          Authorization: `Bearer ${process.env.NEXT_PUBLIC_SERVER_API_KEY}`,
+          Accept: "application/json",
           "Content-Type": "application/json",
         },
         data: JSON.stringify({
@@ -217,9 +221,10 @@ class SpotifyProvider extends React.PureComponent<
         url: `${
           process.env.NEXT_PUBLIC_BASE_SPOTIFY_API_URL
         }/track?token=${accessToken}&ids=${trackIdArray.join(",")}`,
-        method: "get",
+        method: "GET",
         headers: {
-          authorization: process.env.NEXT_PUBLIC_SERVER_API_KEY,
+          Authorization: `Bearer ${process.env.NEXT_PUBLIC_SERVER_API_KEY}`,
+          Accept: "application/json",
           "Content-Type": "application/json",
         },
       });

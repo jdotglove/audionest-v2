@@ -27,10 +27,11 @@ class ArtistProvider extends React.PureComponent<
       const accessToken = sessionStorage.getItem("accessToken");
       const response = await axios({
         url: `${process.env.NEXT_PUBLIC_BASE_SPOTIFY_API_URL}/artist/${this.state.artistId}?token=${accessToken}`,
-        method: "get",
+        method: "GET",
         headers: {
-          authorization: process.env.NEXT_PUBLIC_SERVER_API_KEY,
+          Authorization: `Bearer ${process.env.NEXT_PUBLIC_SERVER_API_KEY}`,
           "Content-Type": "application/json",
+          Accept: "application/json",
         },
       });
       this.setState({ ...response.data });

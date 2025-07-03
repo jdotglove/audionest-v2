@@ -1,7 +1,7 @@
 import React, { Fragment } from "react";
 import { ChartProviderState, ChartProviderProps } from "../../types";
 import ChartContext from "../contexts/ChartContext";
-import { SpotifyCache, TrackStatisticsCache } from "../cache";
+import { TrackStatisticsCache } from "../cache";
 import axios from "../plugins/axios";
 
 class ChartProvider extends React.PureComponent<
@@ -25,9 +25,10 @@ class ChartProvider extends React.PureComponent<
       const accessToken = sessionStorage.getItem("accessToken");
       const response = await axios({
         url: `${process.env.NEXT_PUBLIC_BASE_SPOTIFY_API_URL}/track/${trackSpotifyId}/audio-features?token=${accessToken}`,
-        method: "get",
+        method: "GET",
         headers: {
-          authorization: process.env.NEXT_PUBLIC_SERVER_API_KEY,
+          Authorization: `Bearer ${process.env.NEXT_PUBLIC_SERVER_API_KEY}`,
+          Accept: "application/json",
           "Content-Type": "application/json",
         },
       });

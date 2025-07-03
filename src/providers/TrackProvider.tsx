@@ -2,9 +2,7 @@ import React, { Fragment } from "react";
 
 import axios from "../plugins/axios";
 import { TrackProviderState, TrackProviderProps } from "../../types";
-import { SpotifyCache } from "../cache";
 import TrackContext from "../contexts/TrackContext";
-import { authenticateSpotify } from "../middleware/spotify";
 
 class TrackProvider extends React.Component<
   TrackProviderProps,
@@ -48,9 +46,10 @@ class TrackProvider extends React.Component<
       const accessToken = sessionStorage.getItem("accessToken");
       const response = await axios({
         url: `${process.env.NEXT_PUBLIC_BASE_SPOTIFY_API_URL}/track/${this.state.trackId}?token=${accessToken}`,
-        method: "get",
+        method: "GET",
         headers: {
-          authorization: process.env.NEXT_PUBLIC_SERVER_API_KEY,
+          Authorization: `Bearer ${process.env.NEXT_PUBLIC_SERVER_API_KEY}`,
+          Accept: "application/json",
           "Content-Type": "application/json",
         },
       });
@@ -74,9 +73,10 @@ class TrackProvider extends React.Component<
       const accessToken = sessionStorage.getItem("accessToken");
       const response = await axios({
         url: `${process.env.NEXT_PUBLIC_BASE_SPOTIFY_API_URL}/artist/${artistId}?token=${accessToken}`,
-        method: "get",
+        method: "GET",
         headers: {
-          authorization: process.env.NEXT_PUBLIC_SERVER_API_KEY,
+          Authorization: `Bearer ${process.env.NEXT_PUBLIC_SERVER_API_KEY}`,
+          Accept: "application/json",
           "Content-Type": "application/json",
         },
       });

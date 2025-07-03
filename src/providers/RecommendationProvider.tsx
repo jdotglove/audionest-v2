@@ -5,7 +5,6 @@ import {
   RecommendationProviderState,
   RecommendationProviderProps,
 } from "../../types";
-import { SpotifyCache } from "../cache";
 import RecommendationContext from "../contexts/RecommendationContext";
 import { authenticateSpotify } from "../middleware/spotify";
 
@@ -93,9 +92,10 @@ class RecommendationProvider extends React.PureComponent<
       };
       const response = await axios({
         url: `${process.env.NEXT_PUBLIC_BASE_SPOTIFY_API_URL}/recommendations?token=${accessToken}`,
-        method: "post",
+        method: "POST",
         headers: {
-          authorization: process.env.NEXT_PUBLIC_SERVER_API_KEY,
+          Authorization: `Bearer ${process.env.NEXT_PUBLIC_SERVER_API_KEY}`,
+          Accept: "application/json",
           "Content-Type": "application/json",
         },
         data: JSON.stringify(recommendationPayload),
@@ -118,9 +118,10 @@ class RecommendationProvider extends React.PureComponent<
       const accessToken = sessionStorage.getItem("accessToken");
       const response = await axios({
         url: `${process.env.NEXT_PUBLIC_BASE_SPOTIFY_API_URL}/recommendations/seed-genres?token=${accessToken}`,
-        method: "get",
+        method: "GET",
         headers: {
-          authorization: process.env.NEXT_PUBLIC_SERVER_API_KEY,
+          Authorization: `Bearer ${process.env.NEXT_PUBLIC_SERVER_API_KEY}`,
+          Accept: "application/json",
           "Content-Type": "application/json",
         },
       });
@@ -249,9 +250,10 @@ class RecommendationProvider extends React.PureComponent<
       const accessToken = sessionStorage.getItem("accessToken");
       const response = await axios({
         url: `${process.env.NEXT_PUBLIC_BASE_SPOTIFY_API_URL}/user/${userSpotifyId}/playback-state?token=${accessToken}`,
-        method: "get",
+        method: "GET",
         headers: {
-          authorization: process.env.NEXT_PUBLIC_SERVER_API_KEY,
+          Authorization: `Bearer ${process.env.NEXT_PUBLIC_SERVER_API_KEY}`,
+          Accept: "application/json",
           "Content-Type": "application/json",
         },
       });
@@ -304,9 +306,10 @@ class RecommendationProvider extends React.PureComponent<
       const accessToken = sessionStorage.getItem("accessToken");
       await axios({
         url: `${process.env.NEXT_PUBLIC_BASE_SPOTIFY_API_URL}/user/${userSpotifyId}/queue?token=${accessToken}`,
-        method: "post",
+        method: "POST",
         headers: {
-          authorization: process.env.NEXT_PUBLIC_SERVER_API_KEY,
+          Authorization: `Bearer ${process.env.NEXT_PUBLIC_SERVER_API_KEY}`,
+          Accept: "application/json",
           "Content-Type": "application/json",
         },
         data: JSON.stringify({

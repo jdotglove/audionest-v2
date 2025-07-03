@@ -2,7 +2,6 @@ import React, { Fragment } from "react";
 
 import axios from "../plugins/axios";
 import { PlaylistProviderState, PlaylistProviderProps } from "../../types";
-import { SpotifyCache } from "../cache";
 import PlaylistContext from "../contexts/PlaylistContext";
 
 class PlaylistProvider extends React.PureComponent<
@@ -41,9 +40,10 @@ class PlaylistProvider extends React.PureComponent<
       const accessToken = sessionStorage.getItem("accessToken");
       const response = await axios({
         url: `${process.env.NEXT_PUBLIC_BASE_SPOTIFY_API_URL}/playlist/${playlistSpotifyId}/tracks?token=${accessToken}`,
-        method: "get",
+        method: "GET",
         headers: {
-          authorization: process.env.NEXT_PUBLIC_SERVER_API_KEY,
+          Authorization: `Bearer ${process.env.NEXT_PUBLIC_SERVER_API_KEY}`,
+          Accept: "application/json",
           "Content-Type": "application/json",
         },
       });
@@ -70,9 +70,10 @@ class PlaylistProvider extends React.PureComponent<
       const accessToken = sessionStorage.getItem("accessToken");
       await axios({
         url: `${process.env.NEXT_PUBLIC_BASE_SPOTIFY_API_URL}/user/${userSpotifyId}/playlist?token=${accessToken}`,
-        method: "post",
+        method: "POST",
         headers: {
-          authorization: process.env.NEXT_PUBLIC_SERVER_API_KEY,
+          Authorization: `Bearer ${process.env.NEXT_PUBLIC_SERVER_API_KEY}`,
+          Accept: "application/json",
           "Content-Type": "application/json",
         },
         data: JSON.stringify({
